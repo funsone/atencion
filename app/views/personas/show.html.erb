@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombres:</strong>
+  <%= @persona.nombres %>
+</p>
+
+<p>
+  <strong>Apellidos:</strong>
+  <%= @persona.apellidos %>
+</p>
+
+<p>
+  <strong>Cedula:</strong>
+  <%= @persona.cedula %>
+</p>
+
+<p>
+  <strong>Tipo de cedula:</strong>
+  <%= @persona.tipo_de_cedula %>
+</p>
+
+<p>
+  <strong>Fecha de nacimiento:</strong>
+  <%= @persona.fecha_de_nacimiento %>
+</p>
+
+<p>
+  <strong>Municipios:</strong>
+  <%= @persona.municipios %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @persona.direccion %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @persona.telefono %>
+</p>
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ayuda: one
+  status: 1
+  persona: one
+
+two:
+  ayuda: two
+  status: 1
+  persona: two
