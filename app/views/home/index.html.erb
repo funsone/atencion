@@ -1,5 +1,9 @@
 <div class="col-md-12">
-  <h2 class="text-center">Buenvenido al sistema de atencion al ciudadano! ingrese la cedula del visitante.</h2>
+<div class="text-center col-md-12">
+  <%= image_tag "heart.png"%>
+</div>
+
+  <h2 class="text-center">Registro de visitas atención al ciudadano! ingrese la cedula del visitante.</h2>
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Visitas</a></li>
@@ -9,7 +13,7 @@
 
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-
+</br>
       <ul class="list-group">
             <li class="list-group-item text-muted" contenteditable="false">Búsqueda</li>
             <li class="list-group-item ">
@@ -43,7 +47,57 @@
 
 
     <div id="menu1" class="tab-pane fade">
-  todas las
+      <br>
+
+      <ul class="list-group">
+            <li class="list-group-item text-muted" contenteditable="false">Lista de solictudes</li>
+            <li class="list-group-item ">
+            <%
+
+            p=Solicitud.all
+            if p.length>0%>
+            <div class="table-responsive">
+
+              <table class="table table-hover table-striped" style="font-size:	14px;">
+                <thead>
+                  <tr>
+                    <th class= "actions" style="width: 120px;">Ayuda</th>
+                      <th class= "actions">cédula</th>
+                    <th class= "actions">Nombre Completo</th>
+                    <th class= "actions">Fecha</th>
+                    <th class= "actions">Hora</th>
+                    <th class= "actions">Status</th>
+
+                  </tr>
+                </thead>
+
+                <tbody>form_for
+                  <% p.each do |persona| %>
+                  <tr>
+
+                    <td><%= persona.ayuda.nombre%></td>
+                    <td><%= persona.persona.cedula%></td>
+                    <td class="text-capitalize" ><%= persona.persona.nombres.downcase+" "+persona.persona.apellidos.downcase %></td>
+                    <td><%= persona.created_at.strftime("%d-%m-%Y") %> </td>
+                    <td><%=  persona.created_at.strftime("%H:%M") %></td>
+                    <td><%=  persona.status%></td>
+            </tr>
+                  <%end%>
+                </tbody>
+              </table>
+
+            </div>
+            <%else%>
+            <div class="text-center">
+              <h4>"No hay Solicitudes"</h4>
+
+            </div>
+            <%end%>
+
+            </li>
+          </ul>
+
+
     </div>
 
   </div>

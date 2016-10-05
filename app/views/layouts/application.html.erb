@@ -13,6 +13,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
   </head>
 
   <body>
@@ -25,7 +27,8 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="<%= home_index_path%>">Atención al ciudadano - FUNSONE</a>
+              <%= image_tag "logo.png", class: "navbar-brand"%>
+              <a class="navbar-brand" href="<%= home_index_path%>">Atención al ciudadano</a>
           </div>
           <!-- /.navbar-header -->
 
@@ -53,22 +56,16 @@
                   <ul class="nav" id="side-menu">
 
                       <li>
-                          <a href="<%= home_index_path%>"><i class="fa fa-home fa-fw"></i> Inicio</a>
+                          <a href="<%= home_index_path%>"><i class="fa fa-home fa-fw fa-2x"></i> Inicio</a>
                       </li>
                       <li>
-                          <a href="<%= personas_path%>"><i class="fa fa-users fa-fw"></i> Personas</a>
+                          <a href="<%= personas_path%>"><i class="fa fa-users fa-fw fa-2x"></i> Personas</a>
                       </li>
                       <li>
-                          <a href="#"><i class="fa fa-plus fa-fw"></i> Mas<span class="fa arrow"></span></a>
-                          <ul class="nav nav-second-level">
-                              <li>
-                                  <a href="<%= departamentos_path%>"><i class="fa fa-building-o fa-fw"></i> Departamentos</a>
-                              </li>
-                              <li>
-                                  <a href="<%= ayudas_path%>"><i class="fa fa-heart fa-fw"></i> ayudas</a>
-                              </li>
-                          </ul>
-                          <!-- /.nav-second-level -->
+                          <a href="<%= departamentos_path%>"><i class="fa fa-building-o fa-fw fa-2x"></i> Departamentos</a>
+                      </li>
+                      <li>
+                          <a href="<%= ayudas_path%>"><i class="fa fa-heart fa-fw fa-2x"></i> Ayudas</a>
                       </li>
 
                   </ul>
@@ -78,11 +75,7 @@
           <!-- /.navbar-static-side -->
       </nav>
       <div id="page-wrapper">
-        <div class="row">
-          <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-
-        </div>
+      
         <div class="row">
     <%= yield %>
   </div>

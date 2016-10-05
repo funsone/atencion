@@ -28,8 +28,8 @@ before_filter :authenticate_user!
 
     respond_to do |format|
       if @ayuda.save
-        format.html { redirect_to @ayuda, notice: 'Ayuda was successfully created.' }
-        format.json { render :show, status: :created, location: @ayuda }
+        format.html { redirect_to ayudas_path, notice: 'Ayuda was successfully created.' }
+        format.json { render :show, status: :created, location: ayudas_path }
       else
         format.html { render :new }
         format.json { render json: @ayuda.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ before_filter :authenticate_user!
   def update
     respond_to do |format|
       if @ayuda.update(ayuda_params)
-        format.html { redirect_to @ayuda, notice: 'Ayuda was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ayuda }
+        format.html { redirect_to ayudas_path, notice: 'Ayuda was successfully updated.' }
+        format.json { render :show, status: :ok, location: ayudas_path }
       else
         format.html { render :edit }
         format.json { render json: @ayuda.errors, status: :unprocessable_entity }
