@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Solicituds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ayuda</th>
+      <th>Persona</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @solicituds.each do |solicitud| %>
+      <tr>
+        <td><%= solicitud.ayuda %></td>
+        <td><%= solicitud.persona %></td>
+        <td><%= solicitud.status %></td>
+        <td><%= link_to 'Show', [solicitud.persona,solicitud] %></td>
+        <td><%= link_to 'Edit', edit_persona_solicitud_path(solicitud.persona,solicitud ) %></td>
+        <td><%= link_to 'Destroy', [solicitud.persona,solicitud] , method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Solicitud', new_persona_solicitud_path
+ %>

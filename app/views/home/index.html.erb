@@ -1,2 +1,78 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="col-md-12">
+  <h2 class="text-center">Buenvenido al sistema de atencion al ciudadano! ingrese la cedula del visitante.</h2>
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Visitas</a></li>
+    <li><a data-toggle="tab" href="#menu1">Solicitudes</a></li>
+
+  </ul>
+
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+
+      <ul class="list-group">
+            <li class="list-group-item text-muted" contenteditable="false">Búsqueda</li>
+            <li class="list-group-item ">
+
+              <div class="input-group">
+
+
+                <input type="text" class="form-control" placeholder="Ingrese cédula" name="search" id="search" value="<%= params[:search]%>">
+
+
+                <span class="input-group-addon">
+                  <span id="search_icon" class="fa fa-search"></span>
+
+                </span>
+              </div>
+            </li>
+          </ul>
+          <ul class="list-group">
+                <li class="list-group-item text-muted" contenteditable="false">Resultado</li>
+                <li class="list-group-item ">
+                  <div class="persona">
+        <h2 class="text-center">Realice una búsqueda!</h2>
+                  </div>
+                </li>
+              </ul>
+    </div>
+
+
+
+
+
+
+    <div id="menu1" class="tab-pane fade">
+  todas las
+    </div>
+
+  </div>
+
+
+<script>
+             var classes = ".persona";
+             var delay = (function () {
+               var timer = 0;
+               return function (callback, ms) {
+                 clearTimeout(timer);
+                 timer = setTimeout(callback, ms);
+               };
+             })();
+             function loading() {
+               $("#search_icon").attr("class", "fa fa-refresh fa-spin fa-fw")
+             }
+             function query() {
+               loading();
+               return "/home/index?search=" + $("#search").val();
+             }
+             $(function () {
+
+               $("#search").keyup(function () {
+                 delay(function () {
+                   $.getScript(query());
+                   return false;
+                 }, 500);
+               });
+
+             });
+           </script>

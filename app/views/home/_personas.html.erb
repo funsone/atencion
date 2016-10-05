@@ -1,0 +1,32 @@
+<br>
+<%if p.length>0%>
+<div class="table-responsive">
+
+  <table class="table table-hover table-condensed table-striped" style="font-size:	11px;">
+    <thead>
+      <tr>
+        <th class= "actions" style="width: 120px;">Cédula</th>
+        <th class= "actions">Nombre Completo</th>
+        <th class="actions" style="width: 80px;">Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% p.each do |persona| %>
+      <tr>
+        //$dic["tipos_de_cedula"].key(persona.tipo_de_cedula) +
+        <td><%= persona.cedula%></td>
+        <td class="text-capitalize" ><%= persona.nombres.downcase+" "+persona.apellidos.downcase %></td>
+        <td></td>
+</tr>
+      <%end%>
+    </tbody>
+  </table>
+
+</div>
+<%else%>
+<div class="text-center">
+  <h4>"No hay personas con esta cedula."</h4>
+  <a href="<%= new_persona_path%>" class="btn btn-primary">Agregar persona.</a>
+</div>
+<%end%>

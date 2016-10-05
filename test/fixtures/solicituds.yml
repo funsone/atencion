@@ -2,10 +2,10 @@
 
 one:
   ayuda: one
-  status: 1
   persona: one
+  status: 1
 
 two:
   ayuda: two
-  status: 1
   persona: two
+  status: 1

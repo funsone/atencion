@@ -15,7 +15,9 @@ class PersonasController < ApplicationController
 
   # GET /personas/new
   def new
+
     @persona = Persona.new
+    @persona.cedula=params[:cedula] if !params[:cedula].nil?
   end
 
   # GET /personas/1/edit
@@ -29,8 +31,8 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
-        format.html { redirect_to @persona, notice: 'Persona was successfully created.' }
-        format.json { render :show, status: :created, location: @persona }
+        format.html { redirect_to new_persona_solicitud_path(@persona), notice: 'Persona was successfully created.' }
+        format.json { render :show, status: :created, location: new_persona_solicitud_path(@persona) }
       else
         format.html { render :new }
         format.json { render json: @persona.errors, status: :unprocessable_entity }
@@ -43,7 +45,7 @@ class PersonasController < ApplicationController
   def update
     respond_to do |format|
       if @persona.update(persona_params)
-        format.html { redirect_to @persona, notice: 'Persona was successfully updated.' }
+        format.html {persona redirect_to @persona, notice: 'Persona was successfully updated.' }
         format.json { render :show, status: :ok, location: @persona }
       else
         format.html { render :edit }
@@ -62,6 +64,11 @@ class PersonasController < ApplicationController
     end
   end
 
+
+  #solixud add
+  # persona/X/agregar
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_persona
@@ -69,6 +76,7 @@ class PersonasController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+
     def persona_params
       params.require(:persona).permit(:nombres, :apellidos, :cedula, :tipo_de_cedula, :fecha_de_nacimiento, :municipios, :direccion, :telefono)
     end

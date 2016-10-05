@@ -1,3 +1,3 @@
 class Departamento < ApplicationRecord
- validates :nombre presence: true
+ validates :nombre, presence: true
 end
