@@ -5,7 +5,7 @@ class PersonasController < ApplicationController
   # GET /personas
   # GET /personas.json
   def index
-    @personas = Persona.all
+    @personas = Persona.all.paginate(:page => params[:page]).order('created_at DESC')
   end
 
   # GET /personas/1
@@ -31,7 +31,7 @@ class PersonasController < ApplicationController
 
     respond_to do |format|
       if @persona.save
-        format.html { redirect_to new_persona_solicitud_path(@persona), notice: 'Persona was successfully created.' }
+        format.html { redirect_to new_persona_solicitud_path(@persona), notice: 'Persona agregado exitosamente.' }
         format.json { render :show, status: :created, location: new_persona_solicitud_path(@persona) }
       else
         format.html { render :new }
@@ -45,8 +45,8 @@ class PersonasController < ApplicationController
   def update
     respond_to do |format|
       if @persona.update(persona_params)
-        format.html {persona redirect_to @persona, notice: 'Persona was successfully updated.' }
-        format.json { render :show, status: :ok, location: @persona }
+        format.html {redirect_to personas_url, notice: 'Persona actualizado exitosamente.' }
+        format.json { render :show, status: :ok, location: personas_url }
       else
         format.html { render :edit }
         format.json { render json: @persona.errors, status: :unprocessable_entity }
@@ -59,7 +59,7 @@ class PersonasController < ApplicationController
   def destroy
     @persona.destroy
     respond_to do |format|
-      format.html { redirect_to personas_url, notice: 'Persona was successfully destroyed.' }
+      format.html { redirect_to personas_url, notice: 'Persona eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -78,6 +78,6 @@ class PersonasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
 
     def persona_params
-      params.require(:persona).permit(:nombres, :apellidos, :cedula, :tipo_de_cedula, :fecha_de_nacimiento, :municipios, :direccion, :telefono)
+      params.require(:persona).permit(:nombres, :apellidos, :cedula, :tipo_de_cedula, :fecha_de_nacimiento, :municipios, :direccion, :telefono,:sexo)
     end
 end

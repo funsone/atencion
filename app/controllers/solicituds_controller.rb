@@ -4,7 +4,8 @@ class SolicitudsController < ApplicationController
   # GET /solicituds
   # GET /solicituds.json
   def index
-    @solicituds = Solicitud.all
+    @persona=Persona.find(params[:persona_id])
+      @solicituds = @persona.solicituds.all.paginate(:page => params[:page]).order('created_at DESC')
   end
 
   # GET /solicituds/1
@@ -24,6 +25,8 @@ class SolicitudsController < ApplicationController
 
   # GET /solicituds/1/edit
   def edit
+    @persona=Persona.find(params[:persona_id])
+
   end
 
   # POST /solicituds
@@ -34,8 +37,8 @@ class SolicitudsController < ApplicationController
 
     respond_to do |format|
       if @solicitud.save
-        format.html { redirect_to [@solicitud.persona,@solicitud], notice: 'Solicitud was successfully created.' }
-        format.json { render :show, status: :created, location: @solicitud }
+        format.html { redirect_to persona_solicituds_path(@solicitud.persona), notice: 'Solicitud agregado exitosamente.' }
+        format.json { render :show, status: :created, location: persona_solicituds_path(@solicitud.persona)}
       else
         format.html { render :new }
         format.json { render json: @solicitud.errors, status: :unprocessable_entity }
@@ -48,8 +51,8 @@ class SolicitudsController < ApplicationController
   def update
     respond_to do |format|
       if @solicitud.update(solicitud_params)
-        format.html { redirect_to @solicitud, notice: 'Solicitud was successfully updated.' }
-        format.json { render :show, status: :ok, location: @solicitud }
+        format.html { redirect_to persona_solicituds_path(@solicitud.persona), notice: 'Solicitud actualizado exitosamente.' }
+        format.json { render :show, status: :ok, location: persona_solicituds_path(@solicitud.persona) }
       else
         format.html { render :edit }
         format.json { render json: @solicitud.errors, status: :unprocessable_entity }
@@ -62,7 +65,7 @@ class SolicitudsController < ApplicationController
   def destroy
     @solicitud.destroy
     respond_to do |format|
-      format.html { redirect_to solicituds_url, notice: 'Solicitud was successfully destroyed.' }
+      format.html { redirect_to persona_solicituds_path(@solicitud.persona), notice: 'Solicitud eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

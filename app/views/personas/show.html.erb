@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Nombres:</strong>
@@ -40,5 +40,5 @@
   <%= @persona.telefono %>
 </p>
 
-<%= link_to 'Edit', edit_persona_path(@persona) %> |
-<%= link_to 'Back', personas_path %>
+<%= link_to 'Edit', edit_persona_path(@persona),class:"btn btn-default"  %> |
+<%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), personas_path,class:"btn btn-default"  %>

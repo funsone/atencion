@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  institucion: MyString
+  fecha_de_emision: 2016-10-06
+  descripcion: MyText
+
+two:
+  institucion: MyString
+  fecha_de_emision: 2016-10-06
+  descripcion: MyText

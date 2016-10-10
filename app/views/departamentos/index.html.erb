@@ -1,27 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="col-md-12 page-header">
+  <div class="pull-right">
 
-<h1>Departamentos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @departamentos.each do |departamento| %>
+    <%= link_to raw('<i class="fa fa-plus"></i> Nuevo Departamento'), new_departamento_path,class:"btn btn-default" %>
+  </div>
+  <h1><i class="fa fa-building-o"></i> Departamentos</h1>
+</div>
+<div class="col-md-12 text-center">
+  <%= will_paginate  @departamentos, renderer: BootstrapPagination::Rails%>
+</div>
+<ul class="list-group">
+      <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de ayudas</li>
+      <li class="list-group-item col-md-12">
+  <table class="table table-responsive table-hover table-condensed " style="font-size:11px;">
+    <thead>
       <tr>
-        <td><%= departamento.nombre %></td>
-        <td><%= link_to 'Show', departamento %></td>
-        <td><%= link_to 'Edit', edit_departamento_path(departamento) %></td>
-        <td><%= link_to 'Destroy', departamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nombre</th>
+        <th width="200px"  class="text-center">Acciones</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+
+    <tbody>
+      <% @departamentos.each do |departamento| %>
+        <tr>
+          <td><%= departamento.nombre %></td>
+          <td class="text-center">
+            <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
+          <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_departamento_path(departamento),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>
+          <%= link_to raw('<i class="fa fa-trash-o"></i>'), departamento, method: :delete, data: { confirm: '¿Esta Seguro?' },class:"btn btn-danger" ,"data-toggle": "tooltip", "data-placement": "top", title: "Eliminar elemento"%></div></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</li></ul>
+<div class="col-md-12 text-center">
+  <%= will_paginate  @departamentos, renderer: BootstrapPagination::Rails%>
+</div>
 <br>
-
-<%= link_to 'New Departamento', new_departamento_path %>

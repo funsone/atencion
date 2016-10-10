@@ -1,106 +1,30 @@
 <div class="col-md-12">
-<div class="text-center col-md-12">
-  <%= image_tag "heart.png"%>
+<div class="text-center col-md-12 page-header"></br>
+  <div class="col-md-2">
+    <%= image_tag "heart.png",width: "50.5%"%>
+  </div>
+    <h2 class="pull-right col-md-10 text-center">Registro de visitas atención al ciudadano</br> <small>Fundación Social Nueva Esparta</small></h2>
 </div>
 
-  <h2 class="text-center">Registro de visitas atención al ciudadano! ingrese la cedula del visitante.</h2>
-
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Visitas</a></li>
-    <li><a data-toggle="tab" href="#menu1">Solicitudes</a></li>
-
-  </ul>
-
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-</br>
-      <ul class="list-group">
-            <li class="list-group-item text-muted" contenteditable="false">Búsqueda</li>
-            <li class="list-group-item ">
-
-              <div class="input-group">
 
 
-                <input type="text" class="form-control" placeholder="Ingrese cédula" name="search" id="search" value="<%= params[:search]%>">
+<div class="col-md-12">
+  <%=render "visitas"%>
+</div>
+<div class="col-md-12">
+  <%=render "oficios"%>
+</div>
+
+<div class="col-md-12">
+  <%=render "solicitudes"%>
+</div>
 
 
-                <span class="input-group-addon">
-                  <span id="search_icon" class="fa fa-search"></span>
-
-                </span>
-              </div>
-            </li>
-          </ul>
-          <ul class="list-group">
-                <li class="list-group-item text-muted" contenteditable="false">Resultado</li>
-                <li class="list-group-item ">
-                  <div class="persona">
-        <h2 class="text-center">Realice una búsqueda!</h2>
-                  </div>
-                </li>
-              </ul>
-    </div>
+</div>
 
 
 
 
-
-
-    <div id="menu1" class="tab-pane fade">
-      <br>
-
-      <ul class="list-group">
-            <li class="list-group-item text-muted" contenteditable="false">Lista de solictudes</li>
-            <li class="list-group-item ">
-            <%
-
-            p=Solicitud.all
-            if p.length>0%>
-            <div class="table-responsive">
-
-              <table class="table table-hover table-striped" style="font-size:	14px;">
-                <thead>
-                  <tr>
-                    <th class= "actions" style="width: 120px;">Ayuda</th>
-                      <th class= "actions">cédula</th>
-                    <th class= "actions">Nombre Completo</th>
-                    <th class= "actions">Fecha</th>
-                    <th class= "actions">Hora</th>
-                    <th class= "actions">Status</th>
-
-                  </tr>
-                </thead>
-
-                <tbody>form_for
-                  <% p.each do |persona| %>
-                  <tr>
-
-                    <td><%= persona.ayuda.nombre%></td>
-                    <td><%= persona.persona.cedula%></td>
-                    <td class="text-capitalize" ><%= persona.persona.nombres.downcase+" "+persona.persona.apellidos.downcase %></td>
-                    <td><%= persona.created_at.strftime("%d-%m-%Y") %> </td>
-                    <td><%=  persona.created_at.strftime("%H:%M") %></td>
-                    <td><%=  persona.status%></td>
-            </tr>
-                  <%end%>
-                </tbody>
-              </table>
-
-            </div>
-            <%else%>
-            <div class="text-center">
-              <h4>"No hay Solicitudes"</h4>
-
-            </div>
-            <%end%>
-
-            </li>
-          </ul>
-
-
-    </div>
-
-  </div>
 
 
 <script>

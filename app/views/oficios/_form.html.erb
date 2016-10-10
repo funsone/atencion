@@ -1,0 +1,24 @@
+<%= simple_form_for(@oficio) do |f| %>
+<%= f.error_notification %>
+<ul class="list-group ">
+    <li class="list-group-item text-muted col-md-12" contenteditable="false"><i class="fa fa-database"></i> Datos<div class="pull-right text-warning">
+            <i class="fa fa-asterisk"></i> formularios obligatorios
+        </div>
+    </li>
+    <li class="list-group-item col-md-12">
+        <div class="form-inputs">
+            <div class="col-md-4">
+                <%= f.input :institucion %>
+            </div>
+            <div class="col-md-4">
+                <%= f.input :fecha_de_emision %>
+            </div>
+            <div class="col-md-4">
+                <%= f.input :descripcion %>
+            </div>
+        </div>
+    </li>
+</ul>
+</br>
+<%= render 'layouts/botones', :f=>f, path: oficios_path%>
+<% end %>

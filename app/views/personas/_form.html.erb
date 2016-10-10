@@ -1,57 +1,83 @@
-<%= simple_form_for(persona, html: { class: 'form-horizontal' }) do |f| %>
-  <% if persona.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(persona.errors.count, "error") %> prohibited this persona from being saved:</h2>
+<%= simple_form_for(persona) do |f| %>
 
-      <ul>
-      <% persona.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= f.error_notification %>
+<ul class="list-group ">
+      <li class="list-group-item text-muted col-md-12" contenteditable="false"><i class="fa fa-database"></i> Datos<div class="pull-right text-warning">
+         <i class="fa fa-asterisk"></i> formularios obligatorios
+      </div></li>
+      <li class="list-group-item col-md-12">
+<div class="form-inputs">
+    <div class="col-md-4">
+      <%= f.label "Nacionalidad" %>
+      <%= f.select(:tipo_de_cedula , options_for_select($dic["tipo_de_cedula"],persona.tipo_de_cedula),{include_blank: 'Seleccione la Nacionalidad...'},class: "form-control" )  %>
     </div>
-  <% end %>
+    <div class="col-md-8">
+      <%= f.input :cedula %>
+    </div>
 
-  <div class="field">
-    <%= f.label :nombres %>
-    <%= f.text_field :nombres %>
+    <div class="col-md-6">
+      <%= f.input :nombres %>
+    </div>
+    <div class="col-md-6">
+    <%= f.input :apellidos %>
+    </div>
+    <div class="col-md-4">
+  <%= f.input :telefono %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :sexo %>
+      <%= f.select(:sexo , options_for_select($dic["sexo"],persona.sexo),{include_blank: 'Seleccione un sexo...'},class: "form-control" )  %>
+    </div>
+    <div class="col-md-4">
+    <%= f.input :fecha_de_nacimiento, as: :date  %>
+    </div>
+
+<div class="col-md-4">
+  <%= f.label :municipios %>
+  <%= f.select(:municipios , options_for_select($dic["municipios"],persona.municipios),{include_blank: 'Seleccione un municipios...'},class: "form-control" )  %>
+</div>
+
+  <div class="col-md-8">
+      <%= f.input :direccion %>
   </div>
 
-  <div class="field">
-    <%= f.label :apellidos %>
-    <%= f.text_field :apellidos %>
-  </div>
 
-  <div class="field">
-    <%= f.label :cedula %>
-    <%= f.number_field :cedula %>
-  </div>
+</div>
+</li>
+</ul>
+</br>
+<%= render 'layouts/botones', :f=>f, path: personas_path%>
 
-  <div class="field">
-    <%= f.label :tipo_de_cedula %>
-    <%= f.number_field :tipo_de_cedula %>
-  </div>
 
-  <div class="field">
-    <%= f.label :fecha_de_nacimiento %>
-    <%= f.date_select :fecha_de_nacimiento %>
-  </div>
 
-  <div class="field">
-    <%= f.label :municipios %>
-    <%= f.number_field :municipios %>
-  </div>
 
-  <div class="field">
-    <%= f.label :direccion %>
-    <%= f.text_field :direccion %>
-  </div>
 
-  <div class="field">
-    <%= f.label :telefono %>
-    <%= f.text_field :telefono %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
+<script type="text/javascript">
+$("#buscar").click(function (){
+
+
+  $.ajax({
+
+      url: "http://cedula.herokuapp.com/?ci=",
+
+      type: 'GET',
+      crossDomain: true,
+      dataType: 'jsonp',
+      jsonp: "callback",
+      data: {
+        ci: $("#persona_cedula").val(),
+      nacionalidad: "v"
+    },
+    success: function(respuesta){
+    console.log("Recibes: ", respuesta);
+    $("<pre>").text(JSON.stringify(respuesta)).appendTo("body");
+    	}
+
+  });
+
+
+
+});
+</script>

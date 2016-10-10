@@ -4,7 +4,7 @@ before_filter :authenticate_user!
   # GET /departamentos
   # GET /departamentos.json
   def index
-    @departamentos = Departamento.all
+    @departamentos = Departamento.all.paginate(:page => params[:page]).order('created_at DESC')
   end
 
   # GET /departamentos/1
@@ -28,8 +28,8 @@ before_filter :authenticate_user!
 
     respond_to do |format|
       if @departamento.save
-        format.html { redirect_to @departamento, notice: 'Departamento was successfully created.' }
-        format.json { render :show, status: :created, location: @departamento }
+        format.html { redirect_to departamentos_path notice: 'Departamento agregado exitosamente.' }
+        format.json { render :show, status: :created, location: departamentos_path }
       else
         format.html { render :new }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
@@ -42,8 +42,8 @@ before_filter :authenticate_user!
   def update
     respond_to do |format|
       if @departamento.update(departamento_params)
-        format.html { redirect_to @departamento, notice: 'Departamento was successfully updated.' }
-        format.json { render :show, status: :ok, location: @departamento }
+        format.html { redirect_to departamentos_path, notice: 'Departamento actualizado exitosamente.' }
+        format.json { render :show, status: :ok, location: departamentos_path }
       else
         format.html { render :edit }
         format.json { render json: @departamento.errors, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ before_filter :authenticate_user!
   def destroy
     @departamento.destroy
     respond_to do |format|
-      format.html { redirect_to departamentos_url, notice: 'Departamento was successfully destroyed.' }
+      format.html { redirect_to departamentos_url, notice: 'Departamento eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

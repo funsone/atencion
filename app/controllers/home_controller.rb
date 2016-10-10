@@ -8,5 +8,7 @@ if  !params[:search].nil?
 
 @personas = Persona.search s
   end
+  @oficios=Oficio.all.paginate(:page => params[:page2]).order('created_at DESC')
+  @solicituds=Solicitud.all.paginate(:page => params[:page]).order('created_at DESC')
 end
 end

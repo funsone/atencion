@@ -11,5 +11,15 @@ class ApplicationController < ActionController::Base
 'Mariño' => 7,
 'Macanao' => 8,
 'Tubores' => 9,
-'Villalba' => 10]]
+'Villalba' => 10],
+
+'tipo_de_cedula' => Hash[
+  'V' => 0,
+'E' => 1],
+'status' => Hash[
+  'Normal' => 0,
+'Urgente' => 1],
+'sexo' => Hash[
+  'Masculino' => 0,
+'Femenino' => 1]]
 end

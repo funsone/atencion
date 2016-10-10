@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Ayuda:</strong>
@@ -15,5 +15,5 @@
   <%= @solicitud.status %>
 </p>
 
-<%= link_to 'Edit', edit_persona_solicitud_path(@solicitud.persona,@solicitud) %> |
-<%= link_to 'Back', persona_solicituds_path %>
+<%= link_to 'Edit', edit_persona_solicitud_path(@solicitud.persona,@solicitud),class:"btn btn-default"  %> |
+<%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), persona_solicituds_path,class:"btn btn-default"  %>

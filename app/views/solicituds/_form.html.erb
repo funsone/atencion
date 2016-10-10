@@ -1,12 +1,26 @@
+
+<h4>Solicitud por: <%=@persona.nombres + " " + @persona.apellidos %></h4>
+
 <%= simple_form_for([@solicitud.persona, @solicitud]) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :ayuda, :label_method => lambda { |owner| "#{owner.nombre}" } %>
-    <%= f.input :status %>
+<%= f.error_notification %>
+<ul class="list-group ">
+      <li class="list-group-item text-muted col-md-12" contenteditable="false"><i class="fa fa-database"></i> Datos<div class="pull-right text-warning">
+         <i class="fa fa-asterisk"></i> formularios obligatorios
+      </div></li>
+      <li class="list-group-item col-md-12">
+<div class="form-inputs">
+  <div class="col-md-6">
+        <%= f.association :ayuda, :label_method => lambda { |owner| "#{owner.nombre}" } %>
+  </div>
+  <div class="col-md-6">
+      <%= f.label :status %>
+    <%=f.select(:status , options_for_select($dic["status"],@solicitud.status),{include_blank: 'Seleccione un status...'},class: "form-control" )  %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+
+</div>
+</li>
+</ul>
+</br>
+<%= render 'layouts/botones', :f=>f, path: persona_solicituds_path(@solicitud.persona, @solicitud)%>
 <% end %>

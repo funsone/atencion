@@ -1,9 +1,9 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Nombre:</strong>
   <%= @departamento.nombre %>
 </p>
 
-<%= link_to 'Edit', edit_departamento_path(@departamento) %> |
-<%= link_to 'Back', departamentos_path %>
+<%= link_to 'Edit', edit_departamento_path(@departamento),class:"btn btn-default"  %> |
+<%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), departamentos_path,class:"btn btn-default"  %>

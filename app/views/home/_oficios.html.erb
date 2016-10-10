@@ -1,0 +1,52 @@
+<ul class="list-group">
+      <li class="list-group-item text-muted" contenteditable="false"><i class="fa fa-file-o"></i> Lista de oficios</li>
+      <li class="list-group-item ">
+      <%
+
+      p=@oficios
+      if p.length>0%>
+      <div class="table-responsive">
+
+      <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
+          <thead>
+            <tr>
+              <th class= "actions" style="width: 120px;">Institucion</th>
+
+              <th class= "actions">Descripcion</th>
+              <th class= "actions">Fecha de emision</th>
+                <th class= "actions">Fecha de entrega</th>
+              <th class= "actions">Hora</th>
+
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <% p.each do |oficio| %>
+            <tr>
+
+              <td><%= oficio.institucion%></td>
+              <td><%= oficio.descripcion%></td>
+
+                <td><%= oficio.fecha_de_emision.strftime("%d-%m-%Y")  %> </td>
+              <td><%= oficio.created_at.strftime("%d-%m-%Y") %> </td>
+              <td><%=  oficio.created_at.strftime("%H:%M") %></td>
+
+      </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <div class="col-md-12 text-center">
+          <%= will_paginate  p, renderer: BootstrapPagination::Rails, param_name: "page2"%>
+        </div>
+      </div>
+
+      <%else%>
+      <div class="text-center">
+        <h4>"No hay Solicitudes"</h4>
+
+      </div>
+      <%end%>
+
+      </li>
+    </ul>

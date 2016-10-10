@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Institucion:</strong>
+  <%= @oficio.institucion %>
+</p>
+
+<p>
+  <strong>Fecha de emision:</strong>
+  <%= @oficio.fecha_de_emision %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @oficio.descripcion %>
+</p>
+
+<%= link_to 'Edit', edit_oficio_path(@oficio),class:"btn btn-default"  %> |
+<%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), oficios_path,class:"btn btn-default"  %>

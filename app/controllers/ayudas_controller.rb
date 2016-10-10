@@ -4,7 +4,7 @@ before_filter :authenticate_user!
   # GET /ayudas
   # GET /ayudas.json
   def index
-    @ayudas = Ayuda.all
+    @ayudas = Ayuda.paginate(:page => params[:page]).order('created_at DESC')
   end
 
   # GET /ayudas/1
@@ -28,7 +28,7 @@ before_filter :authenticate_user!
 
     respond_to do |format|
       if @ayuda.save
-        format.html { redirect_to ayudas_path, notice: 'Ayuda was successfully created.' }
+        format.html { redirect_to ayudas_path, notice: 'Ayuda agregado exitosamente.' }
         format.json { render :show, status: :created, location: ayudas_path }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ before_filter :authenticate_user!
   def update
     respond_to do |format|
       if @ayuda.update(ayuda_params)
-        format.html { redirect_to ayudas_path, notice: 'Ayuda was successfully updated.' }
+        format.html { redirect_to ayudas_path, notice: 'Ayuda actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: ayudas_path }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ before_filter :authenticate_user!
   def destroy
     @ayuda.destroy
     respond_to do |format|
-      format.html { redirect_to ayudas_url, notice: 'Ayuda was successfully destroyed.' }
+      format.html { redirect_to ayudas_url, notice: 'Ayuda eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end

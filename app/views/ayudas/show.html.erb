@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Nombre:</strong>
@@ -10,5 +10,5 @@
   <%= @ayuda.departamento %>
 </p>
 
-<%= link_to 'Edit', edit_ayuda_path(@ayuda) %> |
-<%= link_to 'Back', ayudas_path %>
+<%= link_to 'Edit', edit_ayuda_path(@ayuda),class:"btn btn-default"  %> |
+<%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), ayudas_path,class:"btn btn-default"  %>

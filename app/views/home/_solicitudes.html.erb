@@ -1,0 +1,54 @@
+<ul class="list-group">
+      <li class="list-group-item text-muted" contenteditable="false"><i class="fa fa-hand-o-right"></i> Lista de solictudes</li>
+      <li class="list-group-item ">
+      <%
+
+      p=@solicituds
+      if p.length>0%>
+      <div class="table-responsive">
+
+        <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
+          <thead>
+            <tr>
+              <th class= "actions" style="width: 120px;">Ayuda</th>
+                <th class= "actions">cédula</th>
+              <th class= "actions">Nombre Completo</th>
+              <th class= "actions">Fecha</th>
+              <th class= "actions">Hora</th>
+              <th class= "actions">Status</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <% p.each do |persona| %>
+            <%if persona.status==1%>
+            <tr class="danger">
+<%else%>
+<tr class="success">
+<%end%>
+
+              <td><%= persona.ayuda.nombre%></td>
+              <td><%= persona.persona.cedula%></td>
+              <td class="text-capitalize" ><%= persona.persona.nombres.downcase+" "+persona.persona.apellidos.downcase %></td>
+              <td><%= persona.created_at.strftime("%d-%m-%Y") %> </td>
+              <td><%=  persona.created_at.strftime("%H:%M") %></td>
+              <td><%=  $dic["status"].key(persona.status)%></td>
+      </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <div class="col-md-12 text-center">
+          <%= will_paginate  p, renderer: BootstrapPagination::Rails%>
+        </div>
+      </div>
+
+      <%else%>
+      <div class="text-center">
+        <h4>"No hay Solicitudes"</h4>
+
+      </div>
+      <%end%>
+
+      </li>
+    </ul>
