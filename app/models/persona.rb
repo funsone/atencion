@@ -7,7 +7,7 @@ class Persona < ApplicationRecord
         attr_readonly :cedula, :tipo_de_cedula
         validates :fecha_de_nacimiento, date: { before: proc { Time.now }, message: 'es inválida, ingrese una fecha pasada' }
 
-  self.per_page = 3
+  self.per_page = 10
       def self.search(search)
    search = search.downcase
 

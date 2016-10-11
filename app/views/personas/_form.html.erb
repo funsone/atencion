@@ -29,7 +29,7 @@
       <%= f.select(:sexo , options_for_select($dic["sexo"],persona.sexo),{include_blank: 'Seleccione un sexo...'},class: "form-control" )  %>
     </div>
     <div class="col-md-4">
-    <%= f.input :fecha_de_nacimiento, as: :date  %>
+    <%= f.input :fecha_de_nacimiento, as: :date, html5: true  %>
     </div>
 
 <div class="col-md-4">
