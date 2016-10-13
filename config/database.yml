@@ -22,7 +22,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: pos
   password: 0
-
+database: atencion_development
 development:
   <<: *default
   username: pos
@@ -87,4 +87,3 @@ production:
   <<: *default
   username: pos
   password: 0
-  password: <%= ENV['ATENCION_DATABASE_PASSWORD'] %>
