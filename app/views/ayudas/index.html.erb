@@ -3,15 +3,15 @@
 <div class="col-md-12 page-header">
   <div class="pull-right">
 
-    <%= link_to raw('<i class="fa fa-plus"></i> Nueva Ayuda'), new_ayuda_path,class: "btn btn-default" %>
+    <%= link_to raw('<i class="fa fa-plus"></i> Nuevo Requerimiento'), new_ayuda_path,class: "btn btn-default" %>
   </div>
-  <h1><i class="fa fa-heart"></i> Ayudas</h1>
+  <h1><i class="fa fa-check-circle-o"></i> Requerimientos</h1>
 </div>
 <div class="col-md-12 text-center">
   <%= will_paginate  @ayudas, renderer: BootstrapPagination::Rails%>
 </div>
 <ul class="list-group">
-      <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de ayudas</li>
+      <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de requerimiento</li>
       <li class="list-group-item col-md-12">
 <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
   <thead>
@@ -31,7 +31,6 @@
           <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
 
         <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_ayuda_path(ayuda),class:"btn btn-info" ,"data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento"%>
-        <%= link_to raw('<i class="fa fa-trash-o"></i>'), ayuda, method: :delete, data: { confirm: '¿Esta Seguro?' },class:"btn btn-danger","data-toggle": "tooltip", "data-placement": "top", title: "Eliminar elemento" %>
 </div>
       </td>
       </tr>

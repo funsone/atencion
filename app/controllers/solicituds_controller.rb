@@ -79,6 +79,6 @@ class SolicitudsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solicitud_params
-      params.require(:solicitud).permit(:ayuda_id, :persona_id, :status)
+      params.require(:solicitud).permit(:ayuda_id, :persona_id, :status, :observaciones)
     end
 end

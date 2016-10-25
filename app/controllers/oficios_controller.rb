@@ -1,6 +1,6 @@
 class OficiosController < ApplicationController
   before_action :set_oficio, only: [:show, :edit, :update, :destroy]
-
+before_filter :authenticate_user!
   # GET /oficios
   # GET /oficios.json
   def index

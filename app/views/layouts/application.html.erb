@@ -61,24 +61,26 @@
           <div class="navbar-default sidebar" role="navigation">
               <div class="sidebar-nav navbar-collapse">
                   <ul class="nav" id="side-menu">
+                  <%if user_signed_in?%>
+                  <li>
+                      <a href="<%= home_index_path%>"><i class="fa fa-home fa-fw fa-2x"></i> Inicio</a>
+                  </li>
+                  <li>
+                      <a href="<%= personas_path%>"><i class="fa fa-users fa-fw fa-2x"></i> Personas</a>
+                  </li>
+                  <li>
+                      <a href="<%= oficios_path%>"><i class="fa fa-file-o fa-fw fa-2x"></i> Oficios</a>
+                  </li>
+                  <li>
+                      <a href="<%= departamentos_path%>"><i class="fa fa-building-o fa-fw fa-2x"></i> Departamentos</a>
+                  </li>
+                  <li>
+                      <a href="<%= ayudas_path%>"><i class="fa fa-check-circle-o fa-fw fa-2x"></i>  Requerimientos</a>
+                  </li>
+                    <%end%>
 
                       <li>
-                          <a href="<%= home_index_path%>"><i class="fa fa-home fa-fw fa-2x"></i> Inicio</a>
-                      </li>
-                      <li>
-                          <a href="<%= personas_path%>"><i class="fa fa-users fa-fw fa-2x"></i> Personas</a>
-                      </li>
-                      <li>
-                          <a href="<%= oficios_path%>"><i class="fa fa-file-o fa-fw fa-2x"></i> Oficios</a>
-                      </li>
-                      <li>
-                          <a href="<%= departamentos_path%>"><i class="fa fa-building-o fa-fw fa-2x"></i> Departamentos</a>
-                      </li>
-                      <li>
-                          <a href="<%= ayudas_path%>"><i class="fa fa-heart fa-fw fa-2x"></i> Ayudas</a>
-                      </li>
-                      <li>
-                          <small>Coordinación de Informática y sistemas  (2016)</small>
+                          <small><i class="fa fa-code"></i> Coordinación de Informática y sistemas (2016)</small>
                       </li>
 
                   </ul>

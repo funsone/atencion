@@ -40,9 +40,9 @@
         <%= link_to raw('<i class="fa fa-eye"></i>'), persona_solicituds_path(persona),class:"btn btn-success","data-toggle": "tooltip", "data-placement": "top", title: "Ver más" %></div></td>
         <td class="text-center">
             <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
-            <%= link_to raw('<i class="fa fa-eye"></i>'), persona,class:"btn btn-success","data-toggle": "tooltip", "data-placement": "top", title: "Ver más" %>
+
         <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_persona_path(persona),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>
-        <%= link_to raw('<i class="fa fa-trash-o"></i>'), persona, method: :delete, data: { confirm: '¿Esta Seguro?' },class:"btn btn-danger" ,"data-toggle": "tooltip", "data-placement": "top", title: "Eliminar elemento"%></div></td>
+      </div></td>
       </tr>
     <% end %>
   </tbody>

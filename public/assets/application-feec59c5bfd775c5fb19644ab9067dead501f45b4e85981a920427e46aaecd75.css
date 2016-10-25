@@ -9175,7 +9175,7 @@ button.close {
 }
 
 /* line 200, /home/coordinador/.rvm/gems/ruby-2.3.0/gems/font-awesome-rails-4.6.3.1/app/assets/stylesheets/font-awesome.css.erb */
-.fa-heart:before {
+.fa-check-circle-o:before {
   content: "\f004";
 }
 
@@ -9817,7 +9817,7 @@ button.close {
 }
 
 /* line 590, /home/coordinador/.rvm/gems/ruby-2.3.0/gems/font-awesome-rails-4.6.3.1/app/assets/stylesheets/font-awesome.css.erb */
-.fa-heart-o:before {
+.fa-check-circle-o-o:before {
   content: "\f08a";
 }
 
@@ -11706,7 +11706,7 @@ button.close {
 }
 
 /* line 1749, /home/coordinador/.rvm/gems/ruby-2.3.0/gems/font-awesome-rails-4.6.3.1/app/assets/stylesheets/font-awesome.css.erb */
-.fa-heartbeat:before {
+.fa-check-circle-obeat:before {
   content: "\f21e";
 }
 
