@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 'Maneiro' => 5,
 'Marcano' => 6,
 'Mariño' => 7,
-'Macanao' => 8,
+'Península de Macanao' => 8,
 'Tubores' => 9,
 'Villalba' => 10],
 

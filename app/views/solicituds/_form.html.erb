@@ -1,26 +1,30 @@
-
-<h4>Solicitud por: <%=@persona.nombres + " " + @persona.apellidos %></h4>
+<h4 class="">Solicitud por:
+    <%=@persona.nombres.upcase + " " + @persona.apellidos.upcase %></h4>
 
 <%= simple_form_for([@solicitud.persona, @solicitud]) do |f| %>
 <%= f.error_notification %>
 <ul class="list-group ">
-      <li class="list-group-item text-muted col-md-12" contenteditable="false"><i class="fa fa-database"></i> Datos<div class="pull-right text-warning">
-         <i class="fa fa-asterisk"></i> formularios obligatorios
-      </div></li>
-      <li class="list-group-item col-md-12">
-<div class="form-inputs">
-  <div class="col-md-6">
-        <%= f.association :ayuda, :label_method => lambda { |owner| "#{owner.nombre} - #{owner.departamento.nombre}" } %>
-  </div>
-  <div class="col-md-6">
-      <%= f.label :status %>
-    <%=f.select(:status , options_for_select($dic["status"],@solicitud.status),{include_blank: 'Seleccione un status...'},class: "form-control" )  %>
-  </div>
-  <div class="col-md-12">
-      <%= f.input :observaciones%>
-  </div>
-</div>
-</li>
+    <li class="list-group-item text-muted col-md-12" contenteditable="false">
+        <i class="fa fa-database"></i>
+        Datos<div class="pull-right text-warning">
+            <i class="fa fa-asterisk"></i>
+            Campo Obligatorio
+        </div>
+    </li>
+    <li class="list-group-item col-md-12">
+        <div class="form-inputs">
+            <div class="col-md-6">
+                <%= f.association :ayuda, :label_method => lambda { |owner| "#{owner.nombre.upcase} - #{owner.departamento.nombre.upcase}" },  :include_blank => "Seleccione un requerimiento..."  %>
+            </div>
+            <div class="col-md-6">
+                <%= f.label :status %>
+                <%=f.select(:status , options_for_select($dic["status"],@solicitud.status),{include_blank: 'Seleccione un status...'},class: "form-control" )  %>
+            </div>
+            <div class="col-md-12">
+                <%= f.input :observaciones%>
+            </div>
+        </div>
+    </li>
 </ul>
 </br>
 <%= render 'layouts/botones', :f=>f, path: persona_solicituds_path(@solicitud.persona, @solicitud)%>

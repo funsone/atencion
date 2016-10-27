@@ -16,17 +16,17 @@
 <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
   <thead>
     <tr>
-      <th>NOMBRE</th>
-      <th>DEPARTAMENTO</th>
-      <th width="200px"  class="text-center">ACCIONES</th>
+      <th class="text-center">Nombre</th>
+      <th class="text-center">Departamento</th>
+      <th width="200px"  class="text-center">Acciones</th>
     </tr>
   </thead>
 
   <tbody>
     <% @ayudas.each do |ayuda| %>
-      <tr>
-        <td><%= ayuda.nombre %></td>
-        <td><%= ayuda.departamento.nombre %></td>
+      <tr class="text-center">
+        <td><%= ayuda.nombre.upcase %></td>
+        <td><%= ayuda.departamento.nombre.upcase%></td>
         <td class="text-center">
           <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
 

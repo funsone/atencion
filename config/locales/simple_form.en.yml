@@ -2,6 +2,19 @@ en:
   simple_form:
     "yes": 'Si'
     "no": 'No'
+    labels:
+      persona:
+        municipios: 'Municipio'
+        nacionalidad: 'Tipo de Cédula'
+        cedula: 'Cédula'
+        telefono: 'Teléfono'
+        direccion: 'Dirección'
+      oficio:
+        descripcion: 'Descripción'
+        institucion: 'Institución'
+        fecha_de_emision: 'Fecha de emisión'
+      solicitud:
+        ayuda: 'Requerimiento'
     required:
       text: 'requerido'
       mark: '*'

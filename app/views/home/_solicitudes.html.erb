@@ -10,12 +10,13 @@
         <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
           <thead>
             <tr>
-              <th class= "actions" style="width: 120px;">Ayuda</th>
-                <th class= "actions">cédula</th>
-              <th class= "actions">Nombre Completo</th>
-              <th class= "actions">Fecha</th>
-              <th class= "actions">Hora</th>
-              <th class= "actions">Status</th>
+
+              <th class="text-center" style="width:10%">Cédula</th>
+              <th class="text-center" style="width:35%">Nombre Completo</th>
+                <th class="text-center">Ayuda</th>
+              <th class="text-center" style="width:10%">Fecha</th>
+              <th class="text-center" style="width:10%">Hora</th>
+              <th class="text-center" style="width:10%">Status</th>
 
             </tr>
           </thead>
@@ -28,12 +29,13 @@
 <tr class="success">
 <%end%>
 
-              <td><%= persona.ayuda.nombre%></td>
-              <td><%= persona.persona.cedula%></td>
-              <td class="text-capitalize" ><%= persona.persona.nombres.downcase+" "+persona.persona.apellidos.downcase %></td>
-              <td><%= persona.created_at.strftime("%d-%m-%Y") %> </td>
-              <td><%=  persona.created_at.strftime("%H:%M") %></td>
-              <td><%=  $dic["status"].key(persona.status)%></td>
+
+              <td style="width:10%"><%= $dic["tipo_de_cedula"].key(persona.persona.tipo_de_cedula)+ "-" +persona.persona.cedula.to_s%></td>
+              <td class="text-center text-capitalize" style="width:35%"><%= persona.persona.nombres.downcase+" "+persona.persona.apellidos.downcase %></td>
+                <td><%= persona.ayuda.nombre%></td>
+              <td class="text-center" style="width:10%"><%= persona.created_at.strftime("%d-%m-%Y") %> </td>
+              <td class="text-center" style="width:10%"><%=  persona.created_at.strftime("%H:%M") %></td>
+              <td class="text-center" style="width:10%"><%=  $dic["status"].key(persona.status)%></td>
       </tr>
             <%end%>
           </tbody>

@@ -1,13 +1,13 @@
 <div class="col-md-12 page-header">
     <div class="pull-right">
-        <%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), persona_path(@persona),class:"btn btn-default"  %>
+        <%= link_to raw('<i class="fa fa-arrow-left"></i> Regresar'), personas_path,class:"btn btn-default"  %>
 
         <%= link_to raw('<i class="fa fa-plus"></i> Nueva Solicitud'), new_persona_solicitud_path,class:"btn btn-default"  %>
     </div>
     <h1>
         <i class="fa fa-hand-o-right"></i>
         Solicitudes de
-        <%=@persona.nombres + " " +@persona.apellidos%></h1>
+        <%=@persona.nombres.upcase + " " +@persona.apellidos.upcase%></h1>
 </div>
 <div class="col-md-12 text-center">
     <%= will_paginate @solicituds, renderer: BootstrapPagination::Rails%>
@@ -16,7 +16,7 @@
 <ul class="list-group">
     <li class="list-group-item text-muted col-md-12" contenteditable="false">
         <i class="fa fa-hand-o-right"></i>
-        Lista de solictudes</li>
+        Lista de solicitudes</li>
     <li class="list-group-item  col-md-12">
         <%
 
@@ -27,12 +27,10 @@
             <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
                 <thead>
                     <tr>
-                        <th class="actions" style="width: 120px;">Ayuda</th>
-                        <th class="actions">cédula</th>
-                        <th class="actions">Nombre Completo</th>
-                        <th class="actions">Fecha</th>
-                        <th class="actions">Hora</th>
-                        <th class="actions">Status</th>
+                        <th class="text-center" style="width: 120px;">Ayuda</th>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Hora</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
@@ -42,11 +40,9 @@
                     <%if persona.status==1%>
                     <tr class="danger">
 <%else%>
-<tr class="success">
+<tr class="success text-center">
 <%end%>
-                        <td><%= persona.ayuda.nombre%></td>
-                        <td><%= persona.persona.cedula%></td>
-                        <td class="text-capitalize"><%= persona.persona.nombres.downcase+" "+persona.persona.apellidos.downcase %></td>
+                        <td><%= persona.ayuda.nombre.upcase%></td>
                         <td><%= persona.created_at.strftime("%d-%m-%Y") %>
                         </td>
                         <td><%=  persona.created_at.strftime("%H:%M") %></td>
@@ -54,7 +50,7 @@
                         <td class="text-center">
                             <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
                                 <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_persona_solicitud_path(persona.persona, persona),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>
-                              
+
                             </div>
                         </td>
                     </tr>

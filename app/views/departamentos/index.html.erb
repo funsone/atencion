@@ -9,12 +9,12 @@
   <%= will_paginate  @departamentos, renderer: BootstrapPagination::Rails%>
 </div>
 <ul class="list-group">
-      <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de ayudas</li>
+      <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de departamentos</li>
       <li class="list-group-item col-md-12">
   <table class="table table-responsive table-hover table-condensed " style="font-size:11px;">
     <thead>
       <tr>
-        <th>Nombre</th>
+        <th class="text-center">Nombre</th>
         <th width="200px"  class="text-center">Acciones</th>
       </tr>
     </thead>
@@ -22,8 +22,8 @@
 
     <tbody>
       <% @departamentos.each do |departamento| %>
-        <tr>
-          <td><%= departamento.nombre %></td>
+        <tr class="text-center">
+          <td><%= departamento.nombre.upcase %></td>
           <td class="text-center">
             <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
           <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_departamento_path(departamento),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>

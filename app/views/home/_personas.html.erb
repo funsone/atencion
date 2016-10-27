@@ -5,29 +5,27 @@
     <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
         <thead>
             <tr>
-                <th>Cédula</th>
-                <th>Nombre Completo</th>
-                <th>Fecha de nacimiento</th>
-                <th>Municipio</th>
-                <th>Dirección</th>
-                <th>Teléfono</th>
-                <th>Solicitudes</th>
-                <th>Acciones</th>
+                <th class="text-center">Cédula</th>
+                <th class="text-center">Nombre Completo</th>
+                <th class="text-center">Fecha de nacimiento</th>
+                <th class="text-center">Municipio</th>
+                <th class="text-center">Dirección</th>
+                <th class="text-center">Teléfono</th>
+                <th class="text-center">Solicitudes</th>
+                <th class="text-center">Acciones</th>
             </tr>
         </thead>
 
         <tbody>
             <% @personas.each do |persona| %>
             <tr>
-                <td><%= $dic["tipo_de_cedula"].key(persona.tipo_de_cedula).to_s + persona.cedula.to_s %></td>
-                <td class="text-capitalize"><%= persona.nombres %>
-                    <%= persona.apellidos %></td>
-
-                <td><%= persona.fecha_de_nacimiento.strftime("%d-%m-%Y")  %></td>
-                <td><%= $dic["municipios"].key(persona.municipios) %></td>
-                <td><%= persona.direccion %></td>
-                <td><%= persona.telefono %></td>
-                <td>
+                <td><%= $dic["tipo_de_cedula"].key(persona.tipo_de_cedula).to_s + "-" + persona.cedula.to_s %></td>
+                <td class="text-capitalize text-center"><%= persona.nombres.downcase + " " +persona.apellidos.downcase %></td>
+                <td class="text-center"><%= persona.fecha_de_nacimiento %></td>
+                <td class="text-center"><%= $dic["municipios"].key(persona.municipios) %></td>
+                <td class="text-capitalize"><%= persona.direccion.downcase%></td>
+                <td class="text-center"><%= persona.telefono %></td>
+                <td class="text-center">
                     <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
                         <%= link_to raw('<i class="fa fa-plus"></i>'), new_persona_solicitud_path(persona),class:"btn btn-default" %>
                         <%= link_to raw('<i class="fa fa-eye"></i>'), persona_solicituds_path(persona),class:"btn btn-success","data-toggle": "tooltip", "data-placement": "top", title: "Ver más" %></div>
@@ -36,7 +34,6 @@
                     <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
                         <%= link_to raw('<i class="fa fa-eye"></i>'), persona,class:"btn btn-success","data-toggle": "tooltip", "data-placement": "top", title: "Ver más" %>
                         <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_persona_path(persona),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>
-                        <%= link_to raw('<i class="fa fa-trash-o"></i>'), persona, method: :delete, data: { confirm: '¿Esta Seguro?' },class:"btn btn-danger","data-toggle": "tooltip", "data-placement": "top", title: "Eliminar elemento" %></div>
                 </td>
             </tr>
             <% end %>
@@ -46,6 +43,6 @@
 <%else%>
 <div class="text-center">
     <h4>"No hay personas con esta cédula."</h4>
-    <a href="<%= new_persona_path+"?cedula="+params[:search]%>" class="btn btn-default">Agregar persona</a>
+    <a href="<%= new_persona_path+" ?cedula="+params[:search]%>" class="btn btn-default">Agregar persona</a>
 </div>
 <%end%>

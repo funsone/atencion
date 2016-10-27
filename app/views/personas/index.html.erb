@@ -1,54 +1,58 @@
-
 <div class="col-md-12 page-header">
-  <div class="pull-right">
-    <%= link_to raw('<i class="fa fa-plus"></i> Nueva Persona'), new_persona_path,class:"btn btn-default"  %>
-  </div>
-  <h1><i class="fa fa-users"></i> Personas</h1>
+    <div class="pull-right">
+        <%= link_to raw('<i class="fa fa-plus"></i> Nueva Persona'), new_persona_path,class:"btn btn-default"  %>
+    </div>
+    <h1>
+        <i class="fa fa-users"></i>
+        Personas</h1>
 </div>
-  <div class="col-md-12 text-center">
-    <%= will_paginate @personas, renderer: BootstrapPagination::Rails%>
-  </div>
-  <ul class="list-group">
-        <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de personas</li>
-        <li class="list-group-item col-md-12">
-  <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
-  <thead>
-    <tr>
-      <th>Cédula</th>
-      <th>Nombre Completo</th>
-      <th>Fecha de nacimiento</th>
-      <th>Municipio</th>
-      <th>Direccion</th>
-      <th>Teléfono</th>
-      <th class="text-capitalize">Solicitudes</th>
-      <th class="text-capitalize">Acciones</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @personas.each do |persona| %>
-      <tr>
-            <td><%= $dic["tipo_de_cedula"].key(persona.tipo_de_cedula).to_s + persona.cedula.to_s %></td>
-        <td class="text-capitalize"><%= persona.nombres + " " +persona.apellidos %></td>
-
-        <td><%= persona.fecha_de_nacimiento %></td>
-        <td><%= $dic["municipios"].key(persona.municipios) %></td>
-        <td><%= persona.direccion %></td>
-        <td><%= persona.telefono %></td>
-        <td>  <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
-        <%= link_to raw('<i class="fa fa-plus"></i>'), new_persona_solicitud_path(persona),class:"btn btn-default" %>
-        <%= link_to raw('<i class="fa fa-eye"></i>'), persona_solicituds_path(persona),class:"btn btn-success","data-toggle": "tooltip", "data-placement": "top", title: "Ver más" %></div></td>
-        <td class="text-center">
-            <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
-
-        <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_persona_path(persona),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>
-      </div></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-</li></ul>
 <div class="col-md-12 text-center">
-  <%= will_paginate  @personas, renderer: BootstrapPagination::Rails%>
+    <%= will_paginate @personas, renderer: BootstrapPagination::Rails%>
+</div>
+<ul class="list-group">
+    <li class="list-group-item text-muted col-md-12" contenteditable="false">Lista de personas</li>
+    <li class="list-group-item col-md-12">
+        <table class="table table-responsive table-hover table-condensed" style="font-size:11px;">
+            <thead>
+                <tr>
+                    <th class="text-center">Cédula</th>
+                    <th class="text-center">Nombre Completo</th>
+                    <th class="text-center">Fecha de nacimiento</th>
+                    <th class="text-center">Municipio</th>
+                    <th class="text-center">Dirección</th>
+                    <th class="text-center">Teléfono</th>
+                    <th class="text-center">Solicitudes</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @personas.each do |persona| %>
+                <tr>
+                    <td><%= $dic["tipo_de_cedula"].key(persona.tipo_de_cedula).to_s + "-" + persona.cedula.to_s %></td>
+                    <td class="text-capitalize text-center"><%= persona.nombres.downcase + " " +persona.apellidos.downcase %></td>
+                    <td class="text-center"><%= persona.fecha_de_nacimiento %></td>
+                    <td class="text-center"><%= $dic["municipios"].key(persona.municipios) %></td>
+                    <td class="text-capitalize"><%= persona.direccion.downcase%></td>
+                    <td class="text-center"><%= persona.telefono %></td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
+                            <%= link_to raw('<i class="fa fa-plus"></i>'), new_persona_solicitud_path(persona),class:"btn btn-default" %>
+                            <%= link_to raw('<i class="fa fa-eye"></i>'), persona_solicituds_path(persona),class:"btn btn-success","data-toggle": "tooltip", "data-placement": "top", title: "Ver más" %></div>
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group btn-group-xs form-inline" role="group" aria-label="...">
+
+                            <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_persona_path(persona),class:"btn btn-info","data-toggle": "tooltip", "data-placement": "top", title: "Editar elemento" %>
+                        </div>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </li>
+</ul>
+<div class="col-md-12 text-center">
+    <%= will_paginate  @personas, renderer: BootstrapPagination::Rails%>
 </div>
 <br>
