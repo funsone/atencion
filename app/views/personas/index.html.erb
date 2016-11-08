@@ -31,7 +31,7 @@
                 <tr>
                     <td><%= $dic["tipo_de_cedula"].key(persona.tipo_de_cedula).to_s + "-" + persona.cedula.to_s %></td>
                     <td class="text-capitalize text-center"><%= persona.nombres.downcase + " " +persona.apellidos.downcase %></td>
-                    <td class="text-center"><%= persona.fecha_de_nacimiento %></td>
+                    <td class="text-center"><%= persona.fecha_de_nacimiento.strftime("%d-%m-%Y") %></td>
                     <td class="text-center"><%= $dic["municipios"].key(persona.municipios) %></td>
                     <td class="text-capitalize"><%= persona.direccion.downcase%></td>
                     <td class="text-center"><%= persona.telefono %></td>
